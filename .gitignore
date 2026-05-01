@@ -1,0 +1,8 @@
+# OS files
+.DS_Store
+
+# Node modules (if you add a package manager later)
+node_modules/
+
+# Build output
+dist/

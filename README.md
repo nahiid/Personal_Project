@@ -1,17 +1,22 @@
-# Website Skeleton
+# ProfileHub Demo
 
-A minimal static website starter project with:
+A static website demo with a browser-only sign in flow, personalized profiles, and a social feed.
 
-- `index.html`
-- `styles.css`
-- `script.js`
+## Features
+
+- Sign up with email, username, and password
+- Unique username enforcement
+- Display name and profile banner
+- Personal profile pages with sections like Movie Ranking, Series Ranking, Movies Recommendation, and Favorite Quotes
+- Social feed where users can post text and images
+- Click a username to open that person’s profile page
 
 ## Usage
 
-Open `index.html` in your browser or use a local web server for development.
+Open `index.html` in your browser. Accounts, profile data, and posts are stored locally in the browser using `localStorage`.
 
 ## Customize
 
-- Edit `index.html` to add new sections and content.
-- Modify `styles.css` for colors, layout, and theming.
-- Use `script.js` to add interactive behavior.
+- Edit `index.html` to adjust the page structure.
+- Update `styles.css` for colors, spacing, and visual style.
+- Modify `script.js` to change authentication, profile layout, or feed behavior.

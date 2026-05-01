@@ -3,43 +3,173 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Website Skeleton</title>
+  <title>ProfileHub</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="site-header">
-    <div class="container">
-      <h1>My Website</h1>
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
+    <div class="container header-inner">
+      <div>
+        <a class="site-logo" href="#home">ProfileHub</a>
+        <p class="site-tag">Create your profile, share posts, and discover others.</p>
+      </div>
+      <nav id="mainNav" class="nav-links"></nav>
     </div>
   </header>
 
   <main>
-    <section id="home" class="hero container">
-      <h2>Welcome to your new website</h2>
-      <p>Start building your pages with this simple HTML/CSS/JS skeleton.</p>
-      <a class="button" href="#about">Learn More</a>
+    <section id="home" class="page home-page">
+      <div class="container hero-card card">
+        <div>
+          <h1>Personal profile pages with a social feed</h1>
+          <p>Sign in, choose a username, set your display name, and build a profile with custom sections like Movie Ranking, Series Ranking, and Favorite Quotes.</p>
+          <div class="hero-actions">
+            <a class="button" href="#auth">Sign In / Sign Up</a>
+            <a class="button button-secondary" href="#feed">View Feed</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="profile-preview-card">
+            <div class="profile-banner-preview">Your banner appears here</div>
+            <div class="profile-preview-meta">
+              <div class="avatar avatar-large">PD</div>
+              <div>
+                <h2>Display Name</h2>
+                <p class="muted">@username</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container overview-grid">
+        <div class="card">
+          <h2>Profiles</h2>
+          <p>Every person can have their own profile page, with a banner under their avatar and profile sections inspired by LinkedIn.</p>
+        </div>
+        <div class="card">
+          <h2>Feed</h2>
+          <p>Everyone can post text or an image and socialize through the feed. Click on a username to open their profile.</p>
+        </div>
+      </div>
     </section>
 
-    <section id="about" class="container content-section">
-      <h3>About this project</h3>
-      <p>This skeleton gives you a clean starting point with responsive layout, styling, and a small JavaScript hook.</p>
+    <section id="auth" class="page hidden">
+      <div class="container auth-grid">
+        <div class="card auth-panel">
+          <div class="auth-toggle" role="tablist">
+            <button id="signInTab" class="tab active" type="button">Sign In</button>
+            <button id="signUpTab" class="tab" type="button">Sign Up</button>
+          </div>
+
+          <form id="signInForm" class="auth-form">
+            <h2>Sign In</h2>
+            <label for="signInIdentifier">Username or email</label>
+            <input id="signInIdentifier" type="text" required placeholder="username or email" />
+            <label for="signInPassword">Password</label>
+            <input id="signInPassword" type="password" required placeholder="password" />
+            <button class="button" type="submit">Sign In</button>
+            <p class="message" id="authMessage"></p>
+          </form>
+
+          <form id="signUpForm" class="auth-form hidden">
+            <h2>Sign Up</h2>
+            <label for="signUpEmail">Email</label>
+            <input id="signUpEmail" type="email" required placeholder="you@example.com" />
+            <label for="signUpUsername">Username</label>
+            <input id="signUpUsername" type="text" required placeholder="unique username" />
+            <label for="signUpDisplayName">Display name</label>
+            <input id="signUpDisplayName" type="text" required placeholder="Your display name" />
+            <label for="signUpPassword">Password</label>
+            <input id="signUpPassword" type="password" required placeholder="password" />
+            <label for="signUpPasswordConfirm">Confirm password</label>
+            <input id="signUpPasswordConfirm" type="password" required placeholder="confirm password" />
+            <button class="button" type="submit">Create account</button>
+            <p class="message" id="signUpMessage"></p>
+          </form>
+        </div>
+
+        <div class="card auth-info">
+          <h2>Why join?</h2>
+          <ul>
+            <li>Create a profile page with a profile photo, banner, and custom sections.</li>
+            <li>Add Movie Ranking, Series Ranking, Movie Recommendations, and Favorite Quotes.</li>
+            <li>Post to the social feed with text and optional images.</li>
+          </ul>
+          <p>Accounts are stored in your browser for this demo so you can experiment without a backend.</p>
+        </div>
+      </div>
     </section>
 
-    <section id="contact" class="container content-section">
-      <h3>Contact</h3>
-      <p>Use the script below to add interactive behavior to your site.</p>
-      <button id="actionButton">Click me</button>
-      <p id="actionMessage" class="message"></p>
+    <section id="feed" class="page hidden">
+      <div class="container feed-grid">
+        <div class="card feed-panel">
+          <div class="feed-header">
+            <div>
+              <h2>Community Feed</h2>
+              <p>Share posts and see what everyone is creating. Click a username to visit their profile.</p>
+            </div>
+          </div>
+
+          <form id="postForm" class="post-form">
+            <label for="postText">Post text</label>
+            <textarea id="postText" rows="4" placeholder="Write something to share..."></textarea>
+            <label for="postImageUrl">Image URL (optional)</label>
+            <input id="postImageUrl" type="url" placeholder="https://example.com/photo.jpg" />
+            <button class="button" type="submit">Post to feed</button>
+            <p class="message" id="postMessage"></p>
+          </form>
+        </div>
+
+        <div id="feedList" class="feed-list"></div>
+      </div>
+    </section>
+
+    <section id="profile" class="page hidden">
+      <div class="container profile-view">
+        <div class="card profile-header-card">
+          <div id="profileBanner" class="profile-banner"></div>
+          <div class="profile-card-body">
+            <div class="avatar avatar-large" id="profileAvatar">NN</div>
+            <div>
+              <h1 id="profileDisplayName">Display Name</h1>
+              <p class="muted" id="profileUsername">@username</p>
+              <p class="muted" id="profileEmail">email@example.com</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-grid">
+          <div class="profile-sections card" id="profileSections"></div>
+          <aside class="profile-editor card hidden" id="profileEditor">
+            <h2>Customize your profile</h2>
+            <label for="bannerText">Banner text</label>
+            <input id="bannerText" type="text" placeholder="Write a quick banner line" />
+
+            <label for="displayNameInput">Display name</label>
+            <input id="displayNameInput" type="text" placeholder="Your visible name" />
+
+            <div class="section-adder">
+              <label for="sectionSelect">Choose section</label>
+              <select id="sectionSelect">
+                <option value="Movie Ranking">Movie Ranking</option>
+                <option value="Series Ranking">Series Ranking</option>
+                <option value="Movies Recommendation">Movies Recommendation</option>
+                <option value="Fav Quotes">Fav Quotes</option>
+              </select>
+              <label for="sectionItemName">Item or quote</label>
+              <input id="sectionItemName" type="text" placeholder="Add a title or quote" />
+              <button class="button" id="addSectionItemButton" type="button">Add item</button>
+            </div>
+            <p class="message" id="profileMessage"></p>
+          </aside>
+        </div>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer container">
-    <p>© 2026 My Website. Built with a simple skeleton setup.</p>
+    <p>© 2026 ProfileHub Demo. Profiles and posts are saved locally in your browser.</p>
   </footer>
 
   <script src="script.js"></script>
